@@ -1,6 +1,6 @@
 #define SLIMR_TEST_MAIN
-#include "slimr/test.hpp"
-#include "slimr/proc.hpp"
+#include "test.hpp"
+#include "proc.hpp"
 
 using namespace slimr::proc;
 
