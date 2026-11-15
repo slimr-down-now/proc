@@ -1,0 +1,8 @@
+{
+  "default": {
+    "slimr-proc": {
+      "baseline": "0.1.2",
+      "port-version": 0
+    }
+  }
+}
