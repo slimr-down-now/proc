@@ -1,4 +1,4 @@
-# slimr::proc (`packages/proc`)
+# slimr::proc
 
 Fast, clean POSIX process spawning library for C++26 using `posix_spawnp`, supporting custom working directories, environment variable merging, stdin piping, non-blocking polling, and timeout execution limits.
 
@@ -11,7 +11,27 @@ Borrowed directly from the design of [`@slimr/proc`](https://www.npmjs.com/packa
 - **Advanced I/O Redirection:** Capture `stdout` and `stderr` independently while optionally writing `stdin_data`.
 - **Environment & CWD Customization:** Easily specify custom working directories and override or merge environment variables.
 
----
+## Install
+
+Add `bdombro/slimr-proc` to `vcpkg-configuration.json`:
+
+```json
+{
+  "kind": "git",
+  "repository": "https://github.com/bdombro/slimr-proc",
+  "baseline": "<commit-sha>",
+  "packages": [
+    "slimr-proc"
+  ]
+}
+```
+
+Declare `slimr-proc` in `vcpkg.json` and link `slimr::proc` in `CMakeLists.txt`:
+
+```cmake
+find_package(slimr-proc CONFIG REQUIRED)
+target_link_libraries(my_target PRIVATE slimr::proc)
+```
 
 ## Quick Start
 
@@ -58,31 +78,12 @@ int main() {
 | `ProcResult` | `struct ProcResult { int exit_code = -1; std::string stdout_str; std::string stderr_str; bool timed_out = false; };` | Result container holding exit code, stdout, stderr, and timeout status. |
 | `exec` | `inline ProcResult exec(const std::vector<std::string>& args, const ProcOptions& options = {})` | Spawns and executes process with args and options, polling output and enforcing timeouts. |
 
-## Install
+## Environment Variables
 
-Add `bdombro/slimr-proc` to `vcpkg-configuration.json`:
+| Name | Required | Purpose |
+| --- | --- | --- |
+| *(none)* | — | — |
 
-```json
-{
-  "kind": "git",
-  "repository": "https://github.com/bdombro/slimr-proc",
-  "baseline": "<commit-sha>",
-  "packages": [
-    "slimr-proc"
-  ]
-}
-```
+## Development
 
-Declare `slimr-proc` in `vcpkg.json` and link `slimr::proc` in `CMakeLists.txt`:
-
-```cmake
-find_package(slimr-proc CONFIG REQUIRED)
-target_link_libraries(my_target PRIVATE slimr::proc)
-```
-
-## Build & Test
-
-```bash
-just test   # Debug build (ASan + UBSan) and run tests
-just build  # Optimized Release build
-```
+See [docs/development.md](docs/development.md) for building, testing, linting, and releasing.
