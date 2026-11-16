@@ -13,12 +13,12 @@ Borrowed directly from the design of [`@slimr/proc`](https://www.npmjs.com/packa
 
 ## Install
 
-Add `bdombro/slimr-proc` to `vcpkg-configuration.json`:
+Add `slimr-down-now/proc` to `vcpkg-configuration.json`:
 
 ```json
 {
   "kind": "git",
-  "repository": "https://github.com/bdombro/slimr-proc",
+  "repository": "https://github.com/slimr-down-now/proc",
   "baseline": "<commit-sha>",
   "packages": [
     "slimr-proc"
