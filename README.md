@@ -78,6 +78,20 @@ int main() {
 | `ProcResult` | `struct ProcResult { int exit_code = -1; std::string stdout_str; std::string stderr_str; bool timed_out = false; };` | Result container holding exit code, stdout, stderr, and timeout status. |
 | `exec` | `inline ProcResult exec(const std::vector<std::string>& args, const ProcOptions& options = {})` | Spawns and executes process with args and options, polling output and enforcing timeouts. |
 
+## Develop against an unreleased lib
+
+Add `"overlay-ports"` to the consumer's `vcpkg-configuration.json`, then run `just test` or `just build` as usual (add one entry per unreleased lib):
+
+```json
+{
+  "overlay-ports": [
+    "<relative path to ~/dev/slimr/<name>/ports/slimr-<name>>"
+  ]
+}
+```
+
+Remove `"overlay-ports"` and bump the registry baseline once the lib is released. Never commit or release with `overlay-ports` set.
+
 ## Environment Variables
 
 | Name | Required | Purpose |
