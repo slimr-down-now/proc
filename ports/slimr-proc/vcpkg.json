@@ -1,6 +1,6 @@
 {
   "name": "slimr-proc",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Header-only safe subprocess execution",
   "features": {
     "tests": {
